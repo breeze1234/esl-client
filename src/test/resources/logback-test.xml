@@ -28,10 +28,10 @@
     <level value="debug" />
   </logger>
   <logger name="org.freeswitch.esl.client.inbound">
-    <level value="info" />
+    <level value="debug" />
   </logger>
   <logger name="org.freeswitch.esl.client.transport.message">
-    <level value="info" />
+    <level value="debug" />
   </logger>
   <logger name="org.freeswitch.esl.client">
     <level value="info" />
