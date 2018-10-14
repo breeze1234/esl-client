@@ -44,7 +44,7 @@ public class ClientExample {
     conference 3000-192.168.1.104 stop all
     
     uuid_broadcast <uuid> app[![hangup_cause]]::args [aleg|bleg|both]
-    uuid_broadcast fb000695-b74d-42de-a543-eaf3a287aca1 /usr/share/freeswitch/sounds/music/8000/suite-espanola-op-47-leyenda.wav
+    uuid_broadcast f5d89b43-308f-4741-a669-834b251b2a49 /usr/share/freeswitch/sounds/music/8000/suite-espanola-op-47-leyenda.wav
     
     pause
 Pause <uuid> playback of recorded media that was started with uuid_broadcast.
@@ -144,9 +144,12 @@ pause 7285cf3e-7fe7-4629-927b-b637213e9e83 on
 									if(msgBody.contains("+OK")) {
 										String msgBodyArr[] = msgBody.split("\\s+");
 										if( cmd.contains("user/1000") && msgBodyArr.length==2 ) {
-											toDoCmdQueue.add("uuid_broadcast,".concat(msgBodyArr[1].substring(0,msgBodyArr[1].length()-1)).concat(" /usr/share/freeswitch/sounds/music/8000/suite-espanola-op-47-leyenda.wav"));
-											Thread.sleep(60*1000);
-											toDoCmdQueue.add("pause,".concat(msgBodyArr[1].substring(0,msgBodyArr[1].length()-1)).concat(" on"));
+											String uuid = msgBodyArr[1].substring(0,msgBodyArr[1].length()-1);
+											Thread.sleep(20*1000);
+//											toDoCmdQueue.add("uuid_broadcast,".concat(uuid).concat(" /usr/share/freeswitch/sounds/en/us/callie/conference/8000/conf-enter_conf_pin.wav"));
+											toDoCmdQueue.add("uuid_broadcast,".concat(uuid).concat(" /usr/share/freeswitch/sounds/music/8000/suite-espanola-op-47-leyenda.wav"));
+											Thread.sleep(2*1000);
+											toDoCmdQueue.add("pause,".concat(uuid).concat(" on"));
 										}
 									}
 								}

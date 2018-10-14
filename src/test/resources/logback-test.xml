@@ -25,13 +25,13 @@
   </appender>
 
   <logger name="org.freeswitch.esl.client.outbound.example">
-    <level value="debug" />
+    <level value="error" />
   </logger>
   <logger name="org.freeswitch.esl.client.inbound">
-    <level value="debug" />
+    <level value="error" />
   </logger>
   <logger name="org.freeswitch.esl.client.transport.message">
-    <level value="debug" />
+    <level value="error" />
   </logger>
   <logger name="org.freeswitch.esl.client">
     <level value="info" />
