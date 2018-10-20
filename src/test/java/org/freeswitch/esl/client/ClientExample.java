@@ -22,8 +22,8 @@ import com.google.common.base.Throwables;
 public class ClientExample {
     private static final Logger L = LoggerFactory.getLogger(ClientExample.class);
     
-    private static String host = "10.100.57.78";
-//    private static String host = "192.168.1.104";
+//    private static String host = "10.100.57.78";
+    private static String host = "192.168.1.105";
     private static int port = 8021;
     private static String password = "ClueCon"; 
     private static String path = "/usr/share/freeswitch/sounds/en/us/callie/ivr/8000/";
@@ -172,10 +172,17 @@ pause 7285cf3e-7fe7-4629-927b-b637213e9e83 on
 //												toDoCmdQueue.add("uuid_broadcast,".concat(uuid).concat(" /usr/share/freeswitch/sounds/music/8000/suite-espanola-op-47-leyenda.wav"));
 //												Thread.sleep(10*1000);
 //												toDoCmdQueue.add("pause,".concat(uuid).concat(" on"));
+												
 												Thread.sleep(10*1000);
-												String cmdArgs = "0 20 6 10000 # ".concat(prompt).concat(" ").concat(failed).concat(" dtmf \\\\d+ 10000");
+												String cmdArgs = "0 20 1 10000 * ".concat(prompt).concat(" ").concat(failed).concat(" dtmf \\\\d+ 10000");
 												SendMsg msg = getSendMsg(uuid, "execute", "play_and_get_digits", cmdArgs);
 												toDoCmdQueue.add(msg);
+												
+												Thread.sleep(20*1000);
+												cmdArgs = "/usr/share/freeswitch/record/record-1000.wav ".concat("20 ").concat("200");
+												msg = getSendMsg(uuid, "execute", "record", cmdArgs);
+												toDoCmdQueue.add(msg);
+												
 											}
 										}
 									}
