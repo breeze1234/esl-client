@@ -173,14 +173,26 @@ pause 7285cf3e-7fe7-4629-927b-b637213e9e83 on
 //												Thread.sleep(10*1000);
 //												toDoCmdQueue.add("pause,".concat(uuid).concat(" on"));
 												
-												Thread.sleep(10*1000);
-												String cmdArgs = "0 20 1 10000 * ".concat(prompt).concat(" ").concat(failed).concat(" dtmf \\\\d+ 10000");
+												Thread.sleep(15*1000);
+												String cmdArgs = "0 20 2 10000 * ".concat(prompt).concat(" ").concat(failed).concat(" dtmf \\\\d+ 10000");
 												SendMsg msg = getSendMsg(uuid, "execute", "play_and_get_digits", cmdArgs);
 												toDoCmdQueue.add(msg);
 												
+//												Thread.sleep(3*1000);
+//												toDoCmdQueue.add("pause,".concat(uuid).concat(" on"));
+												
+												
+												Thread.sleep(1*1000);
+												toDoCmdQueue.add("uuid_break,".concat(uuid));
+												
 												Thread.sleep(20*1000);
-												cmdArgs = "/usr/share/freeswitch/record/record-1000.wav ".concat("20 ").concat("200");
+												cmdArgs = "/usr/share/freeswitch/record/record-1000-3.wav ".concat("20 ").concat("200");
 												msg = getSendMsg(uuid, "execute", "record", cmdArgs);
+												toDoCmdQueue.add(msg);
+												
+												Thread.sleep(5*1000);
+												cmdArgs = "/usr/share/freeswitch/record/record-1000-3.wav";
+												msg = getSendMsg(uuid, "execute", "playback", cmdArgs);
 												toDoCmdQueue.add(msg);
 												
 											}
